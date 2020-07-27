@@ -1,3 +1,4 @@
 {
-  "mongoURI":"mongodb://localhost/dev-connect"
+  "mongoURI":"mongodb://localhost/dev-connect",
+  "jwtSecret":"huncho"
 }
