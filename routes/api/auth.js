@@ -27,6 +27,7 @@ Router.get('/', auth, async (req,res) => {
 // @desc    Authenticate user and get token
 // @access  Public
 Router.post('/', [
+  // 'email' refers to the field to be checked
   check('email', 'Please include valid email').isEmail(),
   check('password', 'Please enter valid password').exists()
 ], async (req,res) => {
