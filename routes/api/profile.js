@@ -10,11 +10,11 @@ const { check, validationResult } = require('express-validator');
 // @access  Private
 Router.get('/me', auth, async (req,res) => {
   try {
-    // req.user is used here because it can be accessed anywhere
+    // req.user is used here because it can be accessed anywhere auth is used
     // .populate references the 'name' and 'avatar' in the 'users' collection
-    // 'User' has a capital u because that was how i named the model, but when querying,
-    // it becomes 'users'
-    const profile = await Profile.findOne({ user: req.user.id }).populate('User', ['name, avatar']);
+    // 'User' has a capital u because that was how i named the model, but when populating,
+    // it becomes 'user'
+    const profile = await Profile.findOne({ user: req.user.id }).populate('user', ['name, avatar']);
     if (!profile) {
       return res.status(400).json({ msg: 'There is no profile for this user' })
     }
@@ -105,6 +105,42 @@ Router.post('/', [auth, [
     res.status(500).send('Server Error');
   }
 
+})
+
+
+
+// @Route   GET api/profile
+// @desc    Get all profiles
+// @access  Public
+Router.get('/', async (req,res) => {
+  try {
+    const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+    res.json(profiles);
+  } catch (e) {
+    console.error(e.message);
+    res.status(500).send('Server Error');
+  }
+})
+
+
+// @Route   GET api/profile/user/:user._id
+// @desc    Get profile by user id
+// @access  Public
+Router.get('/user/:user_id', async (req,res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.params.user_id }).populate('user', ['name', 'avatar']);
+    if (!profile) {
+      return res.status(400).json({ msg: 'Profile not found' })
+    }
+      res.json(profile);
+
+  } catch (e) {
+    console.error(e.message);
+    if (e.kind == 'ObjectId') {
+      return res.status(400).json({ msg: 'Profile not found' })
+    }
+    res.status(500).send('Server Error');
+  }
 })
 
 
