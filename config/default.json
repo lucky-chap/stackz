@@ -1,4 +1,6 @@
 {
   "mongoURI":"mongodb://localhost/dev-connect",
-  "jwtSecret":"huncho"
+  "jwtSecret":"huncho",
+  "githubClientID":"e9620125a0076b374fa9",
+  "githubSecret":"39fd2a24b8933ca80ea2555b2ec98ac15c7505de"
 }
