@@ -13,7 +13,7 @@ import Store from "./Store";
 const App = () => (
   <Provider store={Store}>
     <Router>
-      <Fragment className="App">
+      <Fragment>
         <Navbar />
         <Route exact path="/" component={Landing} />
         <section className="container">
