@@ -10,28 +10,22 @@ const ProfileItem = ({
     location,
     skills,
   },
-}) => {
-  return (
-    <div className="profile bg-light">
-      <img src={avatar} className="round-img" alt="" />
-      <div>
-        <h2>{name}</h2>
-        <p>{status}</p> {company && <span> at {company}</span>}
-        <p className="my-1">{location && <span>{location}</span>}</p>
-        <Link className="btn btn-primary" to={`/profile/${_id}`}>
-          View Profile
-        </Link>
-      </div>
-      <ul>
-        {skills.slice(0, 4).map((skill, idx) => (
-          <li key={idx} className="text-primary">
-            <i className="fas fa-check"></i> {skill}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+}) => (<div className="profile bg-light">
+  <img src={avatar} className="round-img" alt="" />
+  <div>
+    <h2>{name}</h2>
+    <p>{status}</p> {company && <span> at {company}</span>}
+    <p className="my-1">{location && <span>{location}</span>}</p>
+    <Link className="btn btn-primary" to={`/profile/${_id}`}>
+      View Profile
+    </Link>
+  </div>
+  <ul>
+    {skills.slice(0, 4).map((skill, idx) => (<li key={idx} className="text-primary">
+      <i className="fas fa-check"></i> {skill}
+    </li>))}
+  </ul>
+</div>);
 
 ProfileItem.propTypes = {
   profile: PropTypes.object.isRequired,
