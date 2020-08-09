@@ -19,9 +19,9 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
         <i className="fas fa-user"></i> Welcome to the community
       </p>
       {/* PostForm */}
-      {posts.map((post) => (
-        <PostItem key={post._id} post={post} />
-      ))}
+      {posts === null
+        ? "No Posts Yet"
+        : posts.map((post) => <PostItem key={post._id} post={post} />)}
     </Fragment>
   );
 };
