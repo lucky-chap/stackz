@@ -14,7 +14,7 @@
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
@@ -59,6 +59,7 @@ img {
 
 .lead {
   font-size: 1.5rem;
+  width: 70%;
   margin-bottom: 1rem;
 }
 
@@ -150,10 +151,28 @@ img {
 
 .alert {
   padding: 0.8rem;
+  display: inline-block;
+  position: fixed;
+  right: 70px;
+  top: 37px;
+  border-radius: 5px;
+  width: auto;
   margin: 1rem 0;
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
+  z-index: 200;
+  animation-name: alertAnime;
+  animation-duration: 0.3s;
+}
+
+@keyframes alertAnime {
+  from {
+    right: -200px;
+  }
+  to {
+    right: 70px;
+  }
 }
 
 .btn-primary,
@@ -245,10 +264,10 @@ img {
   color: #888;
 }
 
-.form input[type='text'],
-.form input[type='email'],
-.form input[type='password'],
-.form input[type='date'],
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"],
+.form input[type="date"],
 .form select,
 .form textarea {
   display: block;
@@ -258,7 +277,7 @@ img {
   border: 1px solid #ccc;
 }
 
-.form input[type='submit'],
+.form input[type="submit"],
 button {
   font: inherit;
 }
@@ -308,7 +327,7 @@ button {
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px var(--primary-color);
+  background-color: inherit;
   opacity: 0.9;
 }
 
@@ -317,13 +336,17 @@ button {
 }
 
 .navbar a {
-  color: #fff;
+  color: #4a78ced0;
   padding: 0.45rem;
   margin: 0 0.25rem;
 }
 
 .navbar a:hover {
-  color: var(--primary-color);
+  /* color: var(--primary-color); */
+  border-bottom: 1px solid slateblue;
+  transition: 0.5s;
+  animation: 0.5s ease-in-out;
+  /* letter-spacing: 3px; */
 }
 
 .navbar .welcome span {
@@ -333,7 +356,8 @@ button {
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./img/showcase.jpg') no-repeat center center/cover;
+  background: url("https://images.unsplash.com/photo-1550645612-83f5d594b671?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")
+    no-repeat center center/cover;
   height: 100vh;
 }
 
@@ -364,10 +388,10 @@ button {
 .profile-grid {
   display: grid;
   grid-template-areas:
-    'top top'
-    'about about'
-    'exp edu'
-    'github github';
+    "top top"
+    "about about"
+    "exp edu"
+    "github github";
   grid-gap: 1rem;
 }
 
@@ -550,11 +574,11 @@ button {
 
   .profile-grid {
     grid-template-areas:
-      'top'
-      'about'
-      'exp'
-      'edu'
-      'github';
+      "top"
+      "about"
+      "exp"
+      "edu"
+      "github";
   }
 
   .profile-about .skills {
@@ -574,4 +598,51 @@ button {
   .post button {
     padding: 0.3rem 0.4rem;
   }
+}
+
+/* Changes ---- */
+.login {
+  margin: auto;
+  width: 60%;
+  text-align: left;
+  line-height: 2.5;
+  height: auto;
+}
+
+@media only screen and (max-width: 900px) {
+  .login {
+    width: 90%;
+  }
+}
+
+.authSubmit {
+  margin-top: 10px;
+}
+
+.changeHeader {
+  height: auto;
+  background-color: rgb(19, 41, 73);
+  transform: translateY(10);
+  transition: transform 3s ease;
+  animation: headerAnime infinite;
+  position: sticky;
+}
+
+@keyframes headerAnime {
+  0% {
+    background-color: transparent;
+    color: transparent;
+  }
+  35% {
+    background-color: rgb(19, 41, 73);
+  }
+  100% {
+    background-color: rgb(19, 41, 73);
+  }
+}
+
+.navbar ul li {
+  display: inline-block;
+  margin: 0 12px;
+  cursor: pointer;
 }

@@ -1,9 +1,24 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../../actions/auth";
 import { connect } from "react-redux";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+  const [header, setHeader] = useState("");
+
+  const listenScrollEvent = (event) => {
+    if (window.scrollY < 73) {
+      return setHeader("");
+    } else if (window.scrollY > 70) {
+      return setHeader("changeHeader");
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", listenScrollEvent);
+    return () => window.removeEventListener("scroll", listenScrollEvent);
+  }, []);
+
   const authLinks = (
     <ul>
       <li>
@@ -42,9 +57,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 
   return (
-    <nav className="navbar bg-dark">
+    <nav className={`navbar ${header}`}>
       <h1>
-        <Link to="/">
+        <Link to="/" className="logo">
           <i className="fas fa-code"></i> DevConnector
         </Link>
       </h1>

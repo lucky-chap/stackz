@@ -230,7 +230,7 @@ export const deleteAccount = () => async (dispatch) => {
       const errors = err.response.data.errors;
       if (errors) {
         return errors.forEach((error) =>
-          dispatch(setAlert(error.msg, "danger"))
+          dispatch(setAlert(error.msg, "error"))
         );
       }
       dispatch({
