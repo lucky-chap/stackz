@@ -9,6 +9,7 @@ import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
 import ProfileGithub from "./ProfileGithub";
 import { getProfileById } from "../../actions/profile";
+import { Button } from "@chakra-ui/core";
 
 const Profile = ({
   getProfileById,
@@ -26,9 +27,12 @@ const Profile = ({
         <Spinner />
       ) : (
         <Fragment>
-          <Link to="/profiles" className="btn btn-white">
-            Back To Profiles
+          <Link to="/profiles">
+            <Button className="backToProfiles" size="sm">
+              Back To Profiles
+            </Button>
           </Link>
+
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user.id && (
@@ -36,7 +40,7 @@ const Profile = ({
                 Edit Profile
               </Link>
             )}
-          <div className="profile-gird my-1">
+          <div className="profile-gird my-1 profileDetail">
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
             <div className="profile-exp bg-white p-2">

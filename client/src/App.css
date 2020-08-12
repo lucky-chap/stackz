@@ -339,14 +339,13 @@ button {
   color: #4a78ced0;
   padding: 0.45rem;
   margin: 0 0.25rem;
+  font-weight: bold;
 }
 
 .navbar a:hover {
-  /* color: var(--primary-color); */
   border-bottom: 1px solid slateblue;
   transition: 0.5s;
   animation: 0.5s ease-in-out;
-  /* letter-spacing: 3px; */
 }
 
 .navbar .welcome span {
@@ -645,4 +644,17 @@ button {
   display: inline-block;
   margin: 0 12px;
   cursor: pointer;
+}
+
+.backToProfiles {
+  color: gray;
+}
+
+.profileDetail {
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.repoName {
+  font-weight: 450;
 }
