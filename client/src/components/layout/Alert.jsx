@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Icon } from "@chakra-ui/core";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Icon } from '@chakra-ui/core';
 
 const Alert = ({ alerts }) => {
   return (
@@ -9,11 +9,11 @@ const Alert = ({ alerts }) => {
     alerts.length > 0 &&
     alerts.map((alert) => (
       <div key={alert.id} className={`alert alert-${alert.alertType}`}>
-        {alert.alertType == "success" ? (
-          <Icon name="check" size="20px" color="white" />
+        {alert.alertType === 'success' ? (
+          <Icon name='check' size='20px' color='white' />
         ) : (
-          <Icon name="warning" size="20px" color="white" />
-        )}{" "}
+          <Icon name='warning' size='20px' color='white' />
+        )}{' '}
         {alert.msg}
       </div>
     ))

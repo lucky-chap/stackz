@@ -14,11 +14,11 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
-  color: #333;
+  color: #343a40;
 }
 
 a {
@@ -161,7 +161,7 @@ img {
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
-  z-index: 200;
+  z-index: 999;
   animation-name: alertAnime;
   animation-duration: 0.3s;
 }
@@ -264,10 +264,10 @@ img {
   color: #888;
 }
 
-.form input[type="text"],
-.form input[type="email"],
-.form input[type="password"],
-.form input[type="date"],
+.form input[type='text'],
+.form input[type='email'],
+.form input[type='password'],
+.form input[type='date'],
 .form select,
 .form textarea {
   display: block;
@@ -277,7 +277,7 @@ img {
   border: 1px solid #ccc;
 }
 
-.form input[type="submit"],
+.form input[type='submit'],
 button {
   font: inherit;
 }
@@ -324,7 +324,7 @@ button {
   align-items: center;
   padding: 0.7rem 2rem;
   position: fixed;
-  z-index: 1;
+  z-index: 990;
   width: 100%;
   top: 0;
   background-color: inherit;
@@ -355,7 +355,7 @@ button {
 /* Landing Page */
 .landing {
   position: relative;
-  background: url("https://images.unsplash.com/photo-1550645612-83f5d594b671?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80")
+  background: url('https://images.unsplash.com/photo-1550645612-83f5d594b671?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80')
     no-repeat center center/cover;
   height: 100vh;
 }
@@ -387,10 +387,10 @@ button {
 .profile-grid {
   display: grid;
   grid-template-areas:
-    "top top"
-    "about about"
-    "exp edu"
-    "github github";
+    'top top'
+    'about about'
+    'exp edu'
+    'github github';
   grid-gap: 1rem;
 }
 
@@ -573,11 +573,11 @@ button {
 
   .profile-grid {
     grid-template-areas:
-      "top"
-      "about"
-      "exp"
-      "edu"
-      "github";
+      'top'
+      'about'
+      'exp'
+      'edu'
+      'github';
   }
 
   .profile-about .skills {
@@ -600,6 +600,7 @@ button {
 }
 
 /* Changes ---- */
+
 .login {
   margin: auto;
   width: 60%;
@@ -657,4 +658,14 @@ button {
 
 .repoName {
   font-weight: 450;
+}
+
+.createHeader,
+.createText {
+  color: #343a40;
+}
+
+.userName {
+  text-transform: uppercase;
+  font-weight: 600;
 }
