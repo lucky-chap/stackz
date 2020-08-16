@@ -9,7 +9,7 @@ import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
 import ProfileGithub from "./ProfileGithub";
 import { getProfileById } from "../../actions/profile";
-import { Button } from "@chakra-ui/core";
+import { Button, Heading } from "@chakra-ui/core";
 
 const Profile = ({
   getProfileById,
@@ -21,10 +21,14 @@ const Profile = ({
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
 
+
   return (
     <Fragment>
       {profile === null || loading ? (
-        <Spinner />
+        <Fragment>
+          <Spinner />
+          <Heading className='noProfileHeader' as='h3' size='md'>This user does not seem to have a profile yet</Heading>
+        </Fragment>
       ) : (
         <Fragment>
           <Link to="/profiles">

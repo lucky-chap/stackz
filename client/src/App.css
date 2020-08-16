@@ -669,3 +669,7 @@ button {
   text-transform: uppercase;
   font-weight: 600;
 }
+
+.noProfileHeader {
+  font-weight: normal;
+}
