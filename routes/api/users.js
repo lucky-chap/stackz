@@ -3,6 +3,7 @@ const config = require('config');
 const User = require('../../models/User');
 const Router = express.Router();
 const gravatar = require('gravatar');
+const md5 = require('md5');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator')
@@ -27,12 +28,8 @@ Router.post('/', [
     if (user) {
       return res.status(400).json({ errors: [ { msg: 'User already exists' } ] })
     }
-    // Get users gravatar
-    const avatar = gravatar.url(email, {
-      s:'200', /* s stands for size */
-      r:'pg', /* r stands for rating */
-      d:'mm' /* d stands for default */
-    })
+
+    const avatar = `http://gravatar.com/avatar/${md5(email)}?d=identicon`
 
     user = new User({
       name,
