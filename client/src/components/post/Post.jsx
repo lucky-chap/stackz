@@ -11,7 +11,6 @@ import CommentItem from './CommentItem';
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
     getPost(match.params.postId);
-    console.log(typeof match.params.postId);
   }, [getPost]);
 
   return loading || post === null ? (
