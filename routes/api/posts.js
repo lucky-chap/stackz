@@ -190,28 +190,22 @@ Router.post(
 Router.delete('/comment/:post_id/:comment_id', auth, async (req, res) => {
   try {
     const post = await Posts.findById(req.params.post_id);
-    // Pull out comment from post
-    const comment = post.comments.find(
-      (comment) => comment.id === req.params.comment_id
-    );
+    // Pull out comments from post
+    const comments = post.comments;
     // Make sure comment exists
-    if (!comment) {
+    const commentToBePulled = await comments.pull({ _id: req.params.comment_id });
+    if (!commentToBePulled) {
       return res.status(404).json({ msg: 'Comment does not exist' });
     }
-    // If comment is found, make sure user deleting the comment owns the comment
-    if (comment.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: 'User not authorized' });
-    }
 
-    post.comments = post.comments.filter(
-      ({ post_id }) => post_id !== req.params.comment_id
-    );
+    await post.save();
 
     return res.json(post.comments);
   } catch (e) {
     console.error(e.message);
     res.status(500).send('Server Error');
   }
+ 
 });
 
 module.exports = Router;
