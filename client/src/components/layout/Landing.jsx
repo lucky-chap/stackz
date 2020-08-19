@@ -13,10 +13,10 @@ const Landing = ({ isAuthenticated }) => {
     <section className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
-          <h1 className="x-large">Vine</h1>
+          <h1 className="x-large">Stackz</h1>
           <p className="lead">
             Connect with other developers, share code, posts some stuff, create
-            custom vines, build trees and just dream, it's not that hard
+            custom stackz, build trees and just dream, it's not that hard
           </p>
           <ButtonGroup>
             <Button variantColor="teal" variant="solid">
@@ -41,11 +41,11 @@ const Landing = ({ isAuthenticated }) => {
 };
 
 Landing.propTypes = {
-  isAUthenticated: PropTypes.bool,
+  isAUthenticated: PropTypes.bool
 };
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, null)(Landing);
