@@ -1,6 +1,5 @@
 const express = require("express");
 const { check, validationResult } = require("express-validator");
-const config = require("config");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Router = express.Router();
@@ -30,7 +29,7 @@ Router.post(
   [
     // 'email' refers to the field to be checked
     check("email", "Please include valid email").isEmail(),
-    check("password", "Please enter valid password").exists(),
+    check("password", "Please enter valid password").exists()
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -58,8 +57,8 @@ Router.post(
       // Return jsonwebtoken
       const payload = {
         user: {
-          id: user.id,
-        },
+          id: user.id
+        }
       };
 
       jwt.sign(
